@@ -1,0 +1,69 @@
+﻿
+start, Clear
+Store sum
+Store contDiv
+Load contMedia
+Add ten
+Store contMedia
+Load contLoop
+Add ten
+Store contLoop
+
+loop, Input
+Skipcond 800
+Jump halt
+StoreI datoMem
+Load datoMem
+Add one
+Store datoMem
+Load contLoop
+Subt one
+Store contLoop
+Skipcond 800
+Jump mediaSum
+Jump loop
+
+mediaSum, Load sum
+AddI mediaMem
+Store sum
+Load mediaMem
+Add one
+Store mediaMem
+Load contMedia
+Subt one
+Store contMedia
+Skipcond 800
+Jump mediaDiv
+Jump mediaSum
+
+mediaDiv, Load sum
+Subt ten
+Store sum
+Skipcond 800
+Jump checkzero
+Load contDiv
+Add one
+Store contDiv
+Jump mediaDiv
+
+checkzero, Load sum
+Skipcond 400
+Jump end
+Load contDiv
+Add one
+Store contDiv
+
+end, Load contDiv
+Output
+Jump start
+
+halt, Halt
+
+datoMem, HEX 03D
+mediaMem, HEX 03D
+contLoop, DEC 0
+contMedia, DEC 0
+contDiv, DEC 0
+one, DEC 1
+ten, DEC 10
+sum, DEC 0
